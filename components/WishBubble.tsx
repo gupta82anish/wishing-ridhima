@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { memo } from 'react'
 
 type Wish = {
@@ -25,7 +26,7 @@ export default memo(function WishBubble({ wish, onOpen }: { wish: Wish; onOpen: 
             {wish.image_url && (
               <div className="mt-3 overflow-hidden rounded-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={wish.image_url} alt={wish.name} className="w-full h-52 object-cover" />
+                <Image src={wish.image_url} alt={wish.name} className="w-full h-52 object-cover" width={100} height={100} />
               </div>
             )}
           </div>

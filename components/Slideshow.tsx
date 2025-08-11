@@ -11,6 +11,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
+import Image from 'next/image'
 
 export type Slide = { src: string; caption?: string }
 
@@ -39,7 +40,7 @@ export default function Slideshow({ slides }: { slides: Slide[] | LocalSlide[] }
           {items.map((s, i) => (
             <SwiperSlide key={`${s.src}-${i}`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.src} alt={s.caption ?? `Slide ${i + 1}`} className="w-full h-full object-cover" />
+              <Image src={s.src} alt={s.caption ?? `Slide ${i + 1}`} className="w-full h-full object-cover" />
             </SwiperSlide>
           ))}
         </Swiper>
