@@ -1,5 +1,7 @@
 import '@/app/globals.css'
 import type { Metadata } from 'next'
+import { GlobalAudioProvider } from '@/components/GlobalAudioProvider'
+import GlobalAudioControls from '@/components/GlobalAudioControls'
 
 export const metadata: Metadata = {
   title: 'Happy Birthday',
@@ -11,7 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen">
-        {children}
+        <GlobalAudioProvider>
+          {children}
+          <GlobalAudioControls variant="floating" />
+        </GlobalAudioProvider>
       </body>
     </html>
   )

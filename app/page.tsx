@@ -1,9 +1,9 @@
 'use client'
 
-import { RECIPIENT_NAME, MUSIC_SRC } from '@/lib/config'
+import { RECIPIENT_NAME } from '@/lib/config'
 import Countdown from '@/components/Countdown'
 import ConfettiParty from '@/components/ConfettiParty'
-import AudioPlayer from '@/components/AudioPlayer'
+import GlobalAudioControls from '@/components/GlobalAudioControls'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
@@ -37,7 +37,7 @@ export default function HomePage() {
       <Countdown className="mt-2" /> */}
 
       <div className="mt-6 w-full max-w-sm">
-        <AudioPlayer src={MUSIC_SRC} />
+        <GlobalAudioControls />
       </div>
 
       {!started && (
