@@ -4,17 +4,20 @@ import { RECIPIENT_NAME } from '@/lib/config'
 import Countdown from '@/components/Countdown'
 import ConfettiParty from '@/components/ConfettiParty'
 import GlobalAudioControls from '@/components/GlobalAudioControls'
+import { useGlobalAudio } from '@/components/GlobalAudioProvider'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 export default function HomePage() {
   const [started, setStarted] = useState(false)
   const confettiRef = useRef<{ fire: () => void; startContinuous: () => void; stopContinuous: () => void }>(null)
+  const { play } = useGlobalAudio()
 
-  const start = () => {
+  const start = async () => {
     setStarted(true)
     confettiRef.current?.fire() // Initial burst
     confettiRef.current?.startContinuous() // Start continuous confetti
+    await play() // Start the music
   }
 
   // Cleanup continuous confetti when component unmounts
