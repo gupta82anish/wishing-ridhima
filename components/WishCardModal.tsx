@@ -42,31 +42,33 @@ export default function WishCardModal({ open, onClose, wish }: { open: boolean; 
               <SpriteLayer count={18} seed={seed} variant="border" className="z-10" />
 
               {/* Inner content block leaves a margin so sprites are visible around edges */}
-              <div className="relative z-20 m-5 sm:m-7 rounded-2xl p-4 sm:p-6">
+              <div className="relative z-20 m-5 sm:m-7 rounded-2xl p-4 sm:p-6 flex flex-col h-[calc(100vh-8rem)] max-h-[600px]">
                 <div className="text-center">
                   <div className="text-2xl sm:text-3xl font-semibold">Happy Birthday 🎂</div>
                   <div className="mt-1 text-sm opacity-70">From {wish.name}</div>
                 </div>
 
                 {wish.image_url && (
-                  <div className="mt-4 rounded-2xl overflow-hidden">
+                  <div className="mt-4 rounded-2xl overflow-hidden flex-shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={wish.image_url} alt={wish.name} className="w-full max-h-[50vh] object-cover" />
+                    <img src={wish.image_url} alt={wish.name} className="w-full max-h-[30vh] object-cover" />
                   </div>
                 )}
 
-                <p className="mt-4 text-base leading-relaxed whitespace-pre-wrap text-center">
-                  {wish.message}
-                </p>
+                <div className="flex-1 overflow-y-auto mt-4">
+                  <p className="text-base leading-relaxed whitespace-pre-wrap text-center">
+                    {wish.message}
+                  </p>
+                </div>
 
                 {/* Bottom garland sits UNDER the text but inside the inner block */}
-                <div className="relative mt-4">
+                <div className="relative mt-4 flex-shrink-0">
                   {/* z-0 so it's below the surrounding text/content */}
                   <SpriteLayer count={12} seed={seed + 1} variant="bottom" className="z-0" />
                 </div>
 
-                <div className="mt-6 flex items-center justify-center">
-                  <button onClick={onClose} className="rounded-full bg-black text-white px-5 py-2 text-sm shadow">
+                <div className="mt-6 flex items-center justify-center flex-shrink-0">
+                  <button onClick={onClose} className="rounded-full bg-black text-white px-5 py-2 text-sm shadow z-50">
                     Close
                   </button>
                 </div>

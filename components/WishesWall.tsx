@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import WishCardModal from './WishCardModal'
+import WishCard from './WishCard'
+import WishCardCombined from './WishCardCombined'
 
 type Wish = {
   id: string
@@ -60,7 +62,7 @@ export default function WishesWall({ initial }: { initial: Wish[] }) {
                     </div>
                     <div className="font-medium">{w.name}</div>
                     </div>
-                    <div className="text-xs opacity-60">{timeAgo(w.created_at)}</div>
+                    {/* <div className="text-xs opacity-60">{timeAgo(w.created_at)}</div> */}
                 </div>
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">
                     {w.message.length > 20 ? `${w.message.substring(0, 20)}...` : w.message}
@@ -71,7 +73,9 @@ export default function WishesWall({ initial }: { initial: Wish[] }) {
             ))}
         </div>
         </div>
-        <WishCardModal open={open} onClose={() => setOpen(false)} wish={wish as Wish} />
+        {/* <WishCardModal open={open} onClose={() => setOpen(false)} wish={wish as Wish} /> */}
+        {/* <WishCard open={open} onClose={() => setOpen(false)} wish={wish as Wish} /> */}
+        <WishCardCombined open={open} onClose={() => setOpen(false)} wish={wish as Wish} />
     </>
   )
 }
